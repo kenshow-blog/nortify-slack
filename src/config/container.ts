@@ -3,15 +3,29 @@ import { DefaultDynamoStreamsToSlackHandler } from "../handler/default-dynamo-st
 import { container } from "tsyringe";
 import { MockSlack } from "../client/mock-slack";
 import { MockMessageService } from "../services/mock-message-service";
+import { eq, when } from "../util/when";
+import { DefaultSlack } from "../client/default-slack";
 
+const injectClass = when(process.env.STAGE)
+  .on(eq("st"), () => {
+    return {
+      slack: DefaultSlack,
+      messageService: MockMessageService,
+    };
+  })
+  .otherwise(() => {
+    return {
+      slack: MockSlack,
+      messageService: MockMessageService,
+    };
+  });
 container.register("Slack", {
-  useClass: MockSlack,
+  useClass: injectClass.slack,
 });
 container.register("MessageService", {
-  useClass: MockMessageService,
+  useClass: injectClass.messageService,
 });
-
-container.register("DefaultDynamoDbStreamsToSlackHandler", {
+container.register("DefaultDynamoStreamsToSlackHandler", {
   useClass: DefaultDynamoStreamsToSlackHandler,
 });
 

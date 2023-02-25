@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Slack } from "./slack";
 import { injectable } from "tsyringe";
 import axios, { AxiosResponse } from "axios";

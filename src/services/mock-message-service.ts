@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { MessageService } from "./message-service";
 import { DynamoDBRecord } from "aws-lambda";
 import { UserModel } from "../types/user";

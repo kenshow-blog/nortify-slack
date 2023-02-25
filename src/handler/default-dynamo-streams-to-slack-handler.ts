@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from "tsyringe";
 import { DynamoDBStreamEvent } from "aws-lambda";
 import { Slack } from "../client/slack";
@@ -15,6 +16,7 @@ export class DefaultDynamoStreamsToSlackHandler {
   async execute(event: DynamoDBStreamEvent): Promise<void> {
     console.log("通知処理を開始します。");
     event.Records.forEach(async (record) => {
+      if (record.eventName !== "INSERT") return;
       console.log("Stream record: ", JSON.stringify(record, null, 2));
 
       const message = this.messageService.createSlackMessage(record);

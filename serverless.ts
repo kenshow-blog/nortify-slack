@@ -1,4 +1,6 @@
 import { AWS } from "@serverless/typescript";
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname + "/.env" });
 
 const serverelessConfiguration: AWS = {
   service: "nortification-slack",
@@ -16,7 +18,7 @@ const serverelessConfiguration: AWS = {
     region: "ap-northeast-1",
     lambdaHashingVersion: "20201221",
     apiName: "${self:provider.stage}-${self:service}",
-    stage: "${opt:stage, dev}",
+    stage: process.env.STAGE,
     iamRoleStatements: [
       {
         Effect: "Allow",
@@ -52,7 +54,7 @@ const serverelessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLE: "1",
-      STAGE: "${opt:stage, dev}",
+      STAGE: process.env.STAGE,
       TZ: "Asia/Tokyo",
       WEBHOOK_URL: "url",
       SLACK_CHANNEL: "channel",

@@ -5,7 +5,7 @@ import { DynamoDBStreamEvent } from "aws-lambda";
 /**
  * dyanmo streams → slack通知 ハンドラ
  */
-export const execute = async (event: DynamoDBStreamEvent): Promise<void> => {
+export const execute = (event: DynamoDBStreamEvent): Promise<void> => {
   return container
     .resolve<DefaultDynamoStreamsToSlackHandler>(
       "DefaultDynamoStreamsToSlackHandler"
