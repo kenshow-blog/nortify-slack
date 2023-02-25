@@ -56,9 +56,9 @@ const serverelessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLE: "1",
       STAGE: process.env.STAGE,
       TZ: "Asia/Tokyo",
-      WEBHOOK_URL: "url",
-      SLACK_CHANNEL: "channel",
-      SLACK_MENTION: "@here",
+      WEBHOOK_URL: process.env.WEBHOOK_URL,
+      SLACK_CHANNEL: process.env.SLACK_CHANNEL,
+      SLACK_MENTION: "<!channel>",
     },
     tracing: {
       apiGateway: true,

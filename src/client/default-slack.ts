@@ -11,7 +11,7 @@ export class DefaultSlack implements Slack {
     const data = {
       username: SLACK_USERNAME,
       icon_emoji: ICON_EMOJI,
-      text: `${process.env.SLACK_MENTION}\n${form.title}`,
+      text: `${process.env.SLACK_MENTION} \n${form.title}`,
       color: SLACK_COLOR,
       channel: process.env.SLACK_CHANNEL,
       attachments: [

@@ -5,8 +5,8 @@ export const SLACK_USERNAME = "dynamodb-streams-nortice-slack";
 /**
  * 通知lambdaのアイコン
  */
-export const ICON_EMOJI = ":red_circle:";
+export const ICON_EMOJI = ":email:";
 /**
  * メッセージの背景色
  */
-export const SLACK_COLOR = "#D00000";
+export const SLACK_COLOR = "#4bade8";
