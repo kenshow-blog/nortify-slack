@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - npm install
+      - npm i -g serverless
+    pre_build:
+      commands:
+        - npm run lint
+        - npm run test
+    build:
+      commands:
+        - sls package --stage $STAGE

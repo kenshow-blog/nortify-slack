@@ -1,0 +1,34 @@
+{
+    "Records": [{
+      "eventID": "1",
+      "eventName": "INSERT",
+      "eventVersion": "1.0",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-east-1",
+      "dynamodb": {
+        "Keys": {
+          "Id": {
+            "N": "101"
+          }
+        },
+        "NewImage": {
+          "name": {
+            "S": "test user 01"
+          },
+          "email": {
+            "S": "test@gmail.com"
+          },
+          "age": {
+            "N": 25
+          },
+          "createdAt": {
+            "S": "2022-01-22T13:00:00.111+09:00"
+          }
+        },
+        "SequenceNumber": "111",
+        "SizeBytes": 26,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "stream-ARN"
+    }]
+}
