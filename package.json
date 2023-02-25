@@ -8,6 +8,7 @@
     "test": "npx jest test/*test.ts",
     "prepare": "husky install",
     "offline": "sls offline",
+    "invoke": "npx serverless invoke local --function dynamoDbStreamsToSlack --path local/dynamodb-streams-event.json",
     "prettier": "node_modules/.bin/prettier -w src/"
   },
   "dependencies": {
