@@ -15,7 +15,7 @@ const injectClass = when(process.env.STAGE)
   })
   .otherwise(() => {
     return {
-      slack: DefaultSlack,
+      slack: MockSlack,
       messageService: MockMessageService,
     };
   });
