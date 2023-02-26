@@ -31,6 +31,6 @@ export class DefaultSlack implements Slack {
       },
       data: JSON.stringify(data),
     };
-    return await axios.request(content);
+    return axios.request(content);
   }
 }
