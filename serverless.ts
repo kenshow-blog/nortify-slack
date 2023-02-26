@@ -74,13 +74,7 @@ const serverelessConfiguration: AWS = {
         {
           stream: {
             type: "dynamodb",
-            arn: "arn",
-            destinations: {
-              onFailure: {
-                type: "sqs",
-                arn: "sqs:arn",
-              },
-            },
+            arn: process.env.DYNAMODB_STREAMS,
             bisectBatchOnFunctionError: true,
             maximumRetryAttempts: 3,
           },

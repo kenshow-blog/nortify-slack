@@ -7,7 +7,7 @@ import { eq, when } from "../util/when";
 import { DefaultSlack } from "../client/default-slack";
 
 const injectClass = when(process.env.STAGE)
-  .on(eq("st"), () => {
+  .on(eq("dev"), () => {
     return {
       slack: DefaultSlack,
       messageService: MockMessageService,

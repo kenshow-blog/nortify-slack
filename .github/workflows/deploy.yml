@@ -1,0 +1,34 @@
+name: Deploy main branch
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: configure-aws-credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-session-name: GitHubActions
+
+      - name: get-caller-identity is allowed to run on role.
+        run: aws sts get-caller-identity
+      - name: serverless deploy
+        uses: serverless/github-action@v3.1
+        env:
+          STAGE: ${{ secrets.STAGE }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+        with:
+          args: deploy
