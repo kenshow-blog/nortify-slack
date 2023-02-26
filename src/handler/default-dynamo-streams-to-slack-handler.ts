@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { DynamoDBStreamEvent } from "aws-lambda";
 import { Slack } from "../client/slack";
 import { MessageService } from "../services/message-service";
+import { AxiosResponse } from "axios";
 /**
  * dyanmo streams → slack通知 ハンドラ 実装クラス
  */
@@ -20,7 +21,7 @@ export class DefaultDynamoStreamsToSlackHandler {
       console.log("Stream record: ", JSON.stringify(record, null, 2));
 
       const message = this.messageService.createSlackMessage(record);
-      let res;
+      let res: AxiosResponse<any, any>;
       try {
         res = await this.slack.nortice(message);
         console.log(res);
@@ -29,7 +30,9 @@ export class DefaultDynamoStreamsToSlackHandler {
         throw new Error(e);
       }
     });
-    console.log("通知処理が完了しました。");
+    await this._sleep(10000);
+    console.log("10秒待ったのち通知処理が完了しました。");
     return;
   }
+  _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 }
