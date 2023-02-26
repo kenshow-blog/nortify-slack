@@ -2,9 +2,9 @@
 
 ## What is this repositoy?
 
-- This repository enable us to make nortify anything to slack.
+- This repository enable us to make nortify anything to slack easily.
 
-- When we wanna make any system to nortfy to slack, we can use this repository as template.
+- When we wanna make any systems to nortfy to slack, we can use this repository as template.
 
 ## The architecture
 
