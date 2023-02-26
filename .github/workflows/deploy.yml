@@ -32,5 +32,6 @@ jobs:
           STAGE: ${{ secrets.STAGE }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+          DYNAMODB_STREAMS: ${{ secrets.DYNAMODB_STREAMS }}
         with:
           args: deploy
