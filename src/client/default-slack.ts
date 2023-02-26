@@ -21,8 +21,6 @@ export class DefaultSlack implements Slack {
         },
       ],
     };
-    console.log(JSON.stringify(data));
-    console.log(JSON.stringify(process.env.WEBHOOK_URL));
     const content = {
       method: "post",
       baseURL: process.env.WEBHOOK_URL,
@@ -31,6 +29,6 @@ export class DefaultSlack implements Slack {
       },
       data: JSON.stringify(data),
     };
-    return axios.request(content);
+    return await axios.request(content);
   }
 }
