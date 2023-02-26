@@ -20,8 +20,10 @@ export class DefaultDynamoStreamsToSlackHandler {
       console.log("Stream record: ", JSON.stringify(record, null, 2));
 
       const message = this.messageService.createSlackMessage(record);
+      let res;
       try {
-        await this.slack.nortice(message);
+        res = await this.slack.nortice(message);
+        console.log(res);
       } catch (e) {
         console.error("通知処理に失敗しました。", e);
         throw new Error(e);
