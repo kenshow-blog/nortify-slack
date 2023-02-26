@@ -8,7 +8,7 @@
 
 ## The architecture
 
-As init template, this repository provide such as below.
+As an init template, this repository provide it such as below.
 
 ![architecture](https://user-images.githubusercontent.com/65284319/221414281-6ddec5d3-9992-4263-b4c1-b10adcf9e031.png)
 
