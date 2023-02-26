@@ -3,7 +3,6 @@ import { inject, injectable } from "tsyringe";
 import { DynamoDBStreamEvent } from "aws-lambda";
 import { Slack } from "../client/slack";
 import { MessageService } from "../services/message-service";
-import { AxiosResponse } from "axios";
 /**
  * dyanmo streams → slack通知 ハンドラ 実装クラス
  */
@@ -14,7 +13,7 @@ export class DefaultDynamoStreamsToSlackHandler {
     @inject("Slack") private readonly slack: Slack,
     @inject("MessageService") private readonly messageService: MessageService
   ) {}
-  async execute(event: DynamoDBStreamEvent): Promise<void> {
+  execute(event: DynamoDBStreamEvent) {
     console.log("通知処理を開始します。");
     event.Records.forEach((record) => {
       if (record.eventName !== "INSERT") return;

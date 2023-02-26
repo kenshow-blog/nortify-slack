@@ -5,7 +5,8 @@ import { DynamoDBStreamEvent } from "aws-lambda";
 /**
  * dyanmo streams → slack通知 ハンドラ
  */
-export const execute = (event: DynamoDBStreamEvent): Promise<void> => {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const execute = (event: DynamoDBStreamEvent) => {
   return container
     .resolve<DefaultDynamoStreamsToSlackHandler>(
       "DefaultDynamoStreamsToSlackHandler"
