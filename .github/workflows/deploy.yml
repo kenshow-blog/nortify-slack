@@ -24,6 +24,8 @@ jobs:
 
       - name: get-caller-identity is allowed to run on role.
         run: aws sts get-caller-identity
+      - name: install node modules
+        run: yarn
       - name: serverless deploy
         uses: serverless/github-action@v3.1
         env:
